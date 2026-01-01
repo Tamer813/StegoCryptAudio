@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>StegoCrypt Audio</title>
+<style>
+body { background:black; color:#00ff00; font-family:monospace; text-align:center; }
+.container { max-width:900px; margin:auto; padding:20px; }
+.card { border:2px solid #00ff00; border-radius:15px; padding:25px; margin:20px 0; box-shadow:0 0 20px #00ff00; }
+input, button { width:100%; background:black; color:#00ff00; border:2px solid #00ff00; padding:12px; margin-top:10px; font-size:1.1em; border-radius:8px; }
+button:hover { background:#003300; cursor:pointer; }
+a.download-link { display:block; margin-top:10px; color:#00ff00; text-decoration:none; border:2px solid #00ff00; padding:8px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>StegoCrypt – Hide Audio in One Image</h2>
+
+<div class="card">
+<h3>Hide Audio</h3>
+<form method="POST" enctype="multipart/form-data">
+<input type="file" name="image" required>
+<input type="file" name="audio" required>
+<input type="text" name="outname" placeholder="output.png" required>
+<input type="text" name="key" placeholder="Encryption Key" required>
+<input type="text" name="folder" placeholder="Optional save folder">
+<button name="action" value="hide">Hide Audio</button>
+</form>
+
+<p>{{ message }}</p>
+{% if download_link %}
+<a class="download-link" href="{{ download_link }}">Download Image</a>
+{% endif %}
+</div>
+
+<div class="card">
+<h3>Extract Audio</h3>
+<form method="POST" enctype="multipart/form-data">
+<input type="file" name="image" required>
+<input type="text" name="key" placeholder="Encryption Key" required>
+<button name="action" value="extract">Extract Audio</button>
+</form>
+</div>
+
+</div>
+</body>
+</html>
